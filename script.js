@@ -3,31 +3,34 @@
     - It should be compared to a variable named: computersNumber
 */
 
+// adds variable for counting how many times function is run/how many guesses are made.
 let functionCounter = 0;
 
 function randomNumber(userGuess, computersNumber) {
+  // YOUR CODE BELOW
 
-    // YOUR CODE BELOW
+  // adds 1 each time the function is run
+  functionCounter++;
 
+  // Displays out of bounds if input number is not between 1 and 100
+  if (userGuess < 1 || userGuess > 100) {
+    return `Out of bounds! | Number of guesses: ${functionCounter}!`;
 
-    console.log(functionCounter);
-    functionCounter ++;
+    // displays winning message if input and CPU match
+  } else if (userGuess == computersNumber) {
+    return `The number was ${computersNumber}! | Number of guesses: ${functionCounter}!`;
 
-     if (userGuess < 1 || userGuess > 100) {
-        return `Out of bounds! | Number of guesses: ${functionCounter}!`;
-    } else if (userGuess == computersNumber) {
-        return `The number was ${computersNumber}! | Number of guesses: ${functionCounter}!`;
-    } else if (userGuess < computersNumber) {
-        return `Try higher! | Number of guesses: ${functionCounter}!`;
-    } else if (userGuess > computersNumber) {
-        return `Try lower! | Number of guesses: ${functionCounter}!`;
-    };
+    // displays request for higher number if the input is lower than CPU
+  } else if (userGuess < computersNumber) {
+    return `Try higher! | Number of guesses: ${functionCounter}!`;
 
+    // displays request for lower number if the input is lower than CPU
+  } else if (userGuess > computersNumber) {
+    return `Try lower! | Number of guesses: ${functionCounter}!`;
+  }
 
-    // YOUR CODE ABOVE
-};
-
-
+  // YOUR CODE ABOVE
+}
 
 //* Have the Computer Guess your Number ---------------------------------------------
 /* 
@@ -45,19 +48,14 @@ function randomNumber(userGuess, computersNumber) {
 */
 
 function startCompGuess(num) {
-    // This should return a string that denotes the first guessed number
-
-    // YOUR CODE ...
-
-
+  // This should return a string that denotes the first guessed number
+  // YOUR CODE ...
 }
 
 function compGuess(reply) {
-    /* 
+  /* 
     *   The parameter "reply" will either be passing "lower", "correct", or "higher". This should be considered when evaluating th elogic and response.
 
     This should return a string indicating the computers response.
     */
-
 }
-
