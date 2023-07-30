@@ -1,13 +1,27 @@
 /* Within the function called "randomNumber", it allows for a two parameters to be passed. One will be the value that is taken from the input from the HTML document. The other is a random number that has been generated.
     - Include a check to see if the user inputs a value out of scope of the desired values (1-100)
-    - It should be compared to a variable named: numberToGuess
+    - It should be compared to a variable named: computersNumber
 */
+
+let functionCounter = 0;
 
 function randomNumber(userGuess, computersNumber) {
 
     // YOUR CODE BELOW
 
 
+    console.log(functionCounter);
+    functionCounter ++;
+
+     if (userGuess < 1 || userGuess > 100) {
+        return `Out of bounds! | Number of guesses: ${functionCounter}!`;
+    } else if (userGuess == computersNumber) {
+        return `The number was ${computersNumber}! | Number of guesses: ${functionCounter}!`;
+    } else if (userGuess < computersNumber) {
+        return `Try higher! | Number of guesses: ${functionCounter}!`;
+    } else if (userGuess > computersNumber) {
+        return `Try lower! | Number of guesses: ${functionCounter}!`;
+    };
 
 
     // YOUR CODE ABOVE
