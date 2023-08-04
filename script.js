@@ -50,6 +50,13 @@ function randomNumber(userGuess, computersNumber) {
 // global current number variable
 let currentNumber = 1;
 
+let createGuess = () => {
+  currentNumber = Math.floor((Math.random() * 100) + 1);
+  return currentNumber;
+};
+
+createGuess();
+
 function startCompGuess(num) {
   // This should return a string that denotes the first guessed number
   // YOUR CODE ...
