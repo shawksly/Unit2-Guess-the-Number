@@ -47,10 +47,17 @@ function randomNumber(userGuess, computersNumber) {
     You are not limited to just these functions. Feel free to create a new function that may be called to help manage the flow of your code.
 */
 
+// global current number variable
+let currentNumber = 1;
+
 function startCompGuess(num) {
   // This should return a string that denotes the first guessed number
   // YOUR CODE ...
-}
+
+  // Displays CPU guess
+  return `Is your number ${currentNumber}?`;
+
+};
 
 function compGuess(reply) {
   /* 
