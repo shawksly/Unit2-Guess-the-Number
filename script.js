@@ -50,8 +50,9 @@ function randomNumber(userGuess, computersNumber) {
 // global current number variable
 let currentNumber = 1;
 
+// sets currentNumber to a random number between 1 and 100, and returns this variable
 let createGuess = () => {
-  currentNumber = Math.floor((Math.random() * 100) + 1);
+  currentNumber = Math.floor(Math.random() * 100 + 1);
   return currentNumber;
 };
 
@@ -61,10 +62,9 @@ function startCompGuess(num) {
   // This should return a string that denotes the first guessed number
   // YOUR CODE ...
 
-  // Displays CPU guess
+  // displays CPU guess
   return `Is your number ${currentNumber}?`;
-
-};
+}
 
 function compGuess(reply) {
   /* 
@@ -72,4 +72,21 @@ function compGuess(reply) {
 
     This should return a string indicating the computers response.
     */
+
+  // switch statement pulls in reply variable
+  switch (reply) {
+    // outputs if lower
+    case "lower":
+      return `Your number is lower? Is it ${currentNumber}?`;
+      break;
+
+    // outputs if higher
+    case "higher":
+      return `Your number is higher? Is it ${currentNumber}?`;
+      break;
+
+    // outputs if correct
+    default:
+      return `I knew it was ${currentNumber}!`;
+  }
 }
