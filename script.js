@@ -47,20 +47,39 @@ function randomNumber(userGuess, computersNumber) {
     You are not limited to just these functions. Feel free to create a new function that may be called to help manage the flow of your code.
 */
 
+/* 
+// testing for understanding
+let test = Math.random();
+console.log('rand', test);
+console.log('math', 75 - 25 + 1);
+test = test * (75 - 25 + 1);
+console.log('initial math', test);
+test = test + 25;
+console.log('plus min', test);
+test = Math.floor(test);
+console.log('final', test);
+ */
+
 // global current number variable
 let currentNumber = 1;
+let lowest = 1;
+let highest = 100;
 
 // sets currentNumber to a random number between 1 and 100, and returns this variable
 let createGuess = () => {
-  currentNumber = Math.floor(Math.random() * 100 + 1);
+
+  // takes lowest and highest values and creates a random integer between them
+  currentNumber = Math.floor(Math.random() * ((highest - lowest + 1) + lowest));
   return currentNumber;
 };
 
-createGuess();
 
 function startCompGuess(num) {
   // This should return a string that denotes the first guessed number
   // YOUR CODE ...
+  
+  // gets new guess
+  createGuess();
 
   // displays CPU guess
   return `Is your number ${currentNumber}?`;
@@ -75,18 +94,27 @@ function compGuess(reply) {
 
   // switch statement pulls in reply variable
   switch (reply) {
-    // outputs if lower
+
     case "lower":
+
+      //sets upper bounds
+      highest = currentNumber;
+
+      // outputs if lower
       return `Your number is lower? Is it ${currentNumber}?`;
       break;
 
-    // outputs if higher
     case "higher":
+
+      // sets lower bounds
+      lowest = currentNumber;
+
+      // outputs if higher
       return `Your number is higher? Is it ${currentNumber}?`;
       break;
 
-    // outputs if correct
     default:
+      // outputs if correct
       return `I knew it was ${currentNumber}!`;
   }
 }
