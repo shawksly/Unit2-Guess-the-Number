@@ -14,7 +14,7 @@ function randomNumber(userGuess, computersNumber) {
 
   // Displays out of bounds if input number is not between 1 and 100
   if (userGuess < 1 || userGuess > 100) {
-    return `Out of bounds! | Number of guesses: ${functionCounter}!`;
+    return `Please enter a number between 1 and 100! | Number of guesses: ${functionCounter}!`;
 
     // displays winning message if input and CPU match
   } else if (userGuess == computersNumber) {
@@ -65,19 +65,28 @@ let currentNumber = 1;
 let lowest = 1;
 let highest = 100;
 
-// sets currentNumber to a random number between 1 and 100, and returns this variable
+
+/* sets currentNumber to a random number between 1 and 100, and returns this variable */
 let createGuess = () => {
 
-  // takes lowest and highest values and creates a random integer between them
-  currentNumber = Math.floor(Math.random() * ((highest - lowest + 1) + lowest));
+  // takes lowest and highest values and creates a random integer between them, inclusive of those values
+  currentNumber = Math.floor((Math.random() * ((highest - lowest + 1)) + lowest));
+  console.log('current', currentNumber);
+  console.log('lowest', lowest);
+  console.log('highest', highest);
   return currentNumber;
 };
 
 
+/* resets and makes new game */
 function startCompGuess(num) {
   // This should return a string that denotes the first guessed number
   // YOUR CODE ...
   
+  //resets high and low bounds
+  lowest = 1;
+  highest = 100;
+
   // gets new guess
   createGuess();
 
@@ -85,35 +94,35 @@ function startCompGuess(num) {
   return `Is your number ${currentNumber}?`;
 }
 
+
+/* takes user input and creates new guesses */
 function compGuess(reply) {
   /* 
-    *   The parameter "reply" will either be passing "lower", "correct", or "higher". This should be considered when evaluating th elogic and response.
-
+    The parameter "reply" will either be passing "lower", "correct", or "higher". This should be considered when evaluating th elogic and response.
     This should return a string indicating the computers response.
-    */
+  */
 
   // switch statement pulls in reply variable
   switch (reply) {
 
     case "lower":
 
-      //sets upper bounds
-      highest = currentNumber;
+      //sets upper bounds, minus 1 so they it won't guess the same number again.
+      highest = currentNumber - 1;
 
       // outputs if lower
-      return `Your number is lower? Is it ${currentNumber}?`;
-      break;
+      return `Your number is lower? Is it ${createGuess()}?`;
 
     case "higher":
 
-      // sets lower bounds
-      lowest = currentNumber;
+      // sets lower bounds, plus 1 so they it won't guess the same number again.
+      lowest = currentNumber + 1;
 
       // outputs if higher
-      return `Your number is higher? Is it ${currentNumber}?`;
-      break;
+      return `Your number is higher? Is it ${createGuess()}?`;
 
     default:
+
       // outputs if correct
       return `I knew it was ${currentNumber}!`;
   }
