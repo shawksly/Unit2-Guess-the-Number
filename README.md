@@ -1,3 +1,59 @@
+# Upright Unit 2 - Guess the Number Project
+
+#### URL: [https://github.com/shawksly/Unit2-Guess-the-Number](https://github.com/shawksly/Unit2-Guess-the-Number)
+
+## Status === Complete
+
+## Languages
+
+JavaScript, HTML, CSS
+
+## Pseudocode
+This website and code provides a user two games to play, one where they guess the computer's number, and another where the computer guesses their number.
+
+#### Flow / Description
+##### User guesses computer number
+1. variable - functionCounter  = 0 - defined outside function to count how many times it's run
+2. function - randomNumber (guess input from user, computer stored number)
+    1. increment counter variable
+    2. if:
+        1. user guess is outside 1-100, return error
+        2. user guess is the same as the computer number, return correct
+        3. user guess is less than computer number, return try higher
+        4. user guess is more than computer number, return try lower
+##### Computer guesses user number
+1. variables
+    1. currentNumber - stores current computer guess
+    2. lowest - stores lowest guess
+    3. highest - stores highest guess
+    4. guesses - stores amount of guesses
+2. functions
+    1. createGuess() - in charge of logic behind computer guesses
+        1. sets currentNumber to a random number between the highest and lowest guesses -- starts with 1 and 100
+        2. increments guesses variable
+        3. returns currentNumber
+    2. startCompGuess() - in charge of starting the guessing process from the beginning
+        1. (re)sets lowest to 1, highest to 100, and guesses to 0
+        2. calls createGuess().
+        3. returns first guess and amount of guesses as string
+    3. compGuess(reply) - in charge of responding to user button input -- taken in through reply parameter
+        1. if:
+            1. user says number is out of bounds, return error
+        2. else:
+            1. switch - cases from reply variable
+                1. reply == lower
+                    1. highest is set to currentNumber - 1 -- the minus 1 keeps the computer from repeating a number
+                    2. returns new guess with createGuess() and guess count
+                2. reply == higher
+                    1. highest is set to currentNumber + 1 -- the plus 1 keeps the computer from repeating a number
+                    2. returns new guess with createGuess() and guess count
+                3. reply == correct
+                    1. returns current number correct and guess count.
+
+
+# **********************
+# Original ReadMe Below
+# **********************
 # Guess The Number
 
 Before starting to code this project, please find a partner and play this game together verbally for a few rounds.

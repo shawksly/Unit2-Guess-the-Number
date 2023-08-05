@@ -64,6 +64,7 @@ console.log('final', test);
 let currentNumber = 1;
 let lowest = 1;
 let highest = 100;
+let guesses = 0;
 
 
 /* sets currentNumber to a random number between 1 and 100, and returns this variable */
@@ -71,9 +72,14 @@ let createGuess = () => {
 
   // takes lowest and highest values and creates a random integer between them, inclusive of those values
   currentNumber = Math.floor((Math.random() * ((highest - lowest + 1)) + lowest));
-  console.log('current', currentNumber);
-  console.log('lowest', lowest);
-  console.log('highest', highest);
+
+  //increments amount of guesses;
+  guesses++;
+
+  // used for testing
+  // console.log('current', currentNumber);
+  // console.log('lowest', lowest);
+  // console.log('highest', highest);
   return currentNumber;
 };
 
@@ -86,44 +92,51 @@ function startCompGuess(num) {
   //resets high and low bounds
   lowest = 1;
   highest = 100;
+  guesses = 0;
 
   // gets new guess
   createGuess();
 
   // displays CPU guess
-  return `Is your number ${currentNumber}?`;
+  return `Is your number ${currentNumber}? | Guesses: ${guesses}`;
 }
 
 
 /* takes user input and creates new guesses */
 function compGuess(reply) {
   /* 
-    The parameter "reply" will either be passing "lower", "correct", or "higher". This should be considered when evaluating th elogic and response.
+    The parameter "reply" will either be passing "lower", "correct", or "higher". This should be considered when evaluating the logic and response.
     This should return a string indicating the computers response.
   */
 
-  // switch statement pulls in reply variable
-  switch (reply) {
+  // if user tries a buttons that pushes the numbers out of bounds, this catches it.
+  if ((reply === 'higher' && currentNumber === highest) || (reply === 'lower' && currentNumber === lowest)) {
+    return `No changing your number! Start over!`;
+  } else {
 
-    case "lower":
+    // switch statement pulls in reply variable
+    switch (reply) {
 
-      //sets upper bounds, minus 1 so they it won't guess the same number again.
-      highest = currentNumber - 1;
+      case "lower":
 
-      // outputs if lower
-      return `Your number is lower? Is it ${createGuess()}?`;
+        //sets upper bounds, minus 1 so they it won't guess the same number again.
+        highest = currentNumber - 1;
 
-    case "higher":
+        // outputs if lower
+        return `Your number is lower? Is it ${createGuess()}? | Guesses: ${guesses}`;
 
-      // sets lower bounds, plus 1 so they it won't guess the same number again.
-      lowest = currentNumber + 1;
+      case "higher":
 
-      // outputs if higher
-      return `Your number is higher? Is it ${createGuess()}?`;
+        // sets lower bounds, plus 1 so they it won't guess the same number again.
+        lowest = currentNumber + 1;
 
-    default:
+        // outputs if higher
+        return `Your number is higher? Is it ${createGuess()}? | Guesses: ${guesses}`;
 
-      // outputs if correct
-      return `I knew it was ${currentNumber}!`;
+        case "correct":
+
+        // outputs if correct
+        return `I knew it was ${currentNumber}! | Guesses: ${guesses}`;
+    }
   }
 }
