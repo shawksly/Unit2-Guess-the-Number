@@ -50,36 +50,42 @@ function randomNumber(userGuess, computersNumber) {
 /* 
 // testing for understanding
 let test = Math.random();
-console.log('rand', test);
-console.log('math', 75 - 25 + 1);
+console.log('rand:', test);
+console.log('math:', 75 - 25 + 1);
 test = test * (75 - 25 + 1);
-console.log('initial math', test);
+console.log('initial math:', test);
 test = test + 25;
-console.log('plus min', test);
+console.log('plus min:', test);
 test = Math.floor(test);
-console.log('final', test);
+console.log('final:', test);
  */
 
 // global current number variable
-let currentNumber = 1;
-let lowest = 1;
-let highest = 100;
-let guesses = 0;
+let currentNumber;
+let lowest;
+let highest;
+let guesses;
 
 
 /* sets currentNumber to a random number between 1 and 100, and returns this variable */
 let createGuess = () => {
 
   // takes lowest and highest values and creates a random integer between them, inclusive of those values
-  currentNumber = Math.floor((Math.random() * ((highest - lowest + 1)) + lowest));
+  currentNumber = Math.floor(Math.random() * (highest - lowest + 1) + lowest);
+
+  /************************************************************************
+    Alternate, more efficient, guessing method, suggested by instructions
+  ************************************************************************/
+  // currentNumber = Math.floor(((highest - lowest) / 2) + lowest);
 
   //increments amount of guesses;
   guesses++;
 
   // used for testing
-  // console.log('current', currentNumber);
-  // console.log('lowest', lowest);
-  // console.log('highest', highest);
+  // console.log('current:', currentNumber);
+  // console.log('lowest:', lowest);
+  // console.log('highest:', highest);
+
   return currentNumber;
 };
 
