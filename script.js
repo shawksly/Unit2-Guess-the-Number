@@ -115,8 +115,11 @@ function compGuess(reply) {
     This should return a string indicating the computers response.
   */
 
-  // if user tries a buttons that pushes the numbers out of bounds, this catches it.
-  if ((reply === 'higher' && currentNumber === highest) || (reply === 'lower' && currentNumber === lowest)) {
+  // if user tries a button that pushes the numbers out of bounds, this catches it.
+  if (
+    (reply === 'higher' && currentNumber === highest) ||
+    (reply === 'lower' && currentNumber === lowest))
+    {
     return `No changing your number! Start over!`;
   } else {
 
