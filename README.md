@@ -1,6 +1,6 @@
 # Upright Unit 2 - Guess the Number Project
 
-#### URL: [https://github.com/shawksly/Unit2-Guess-the-Number](https://github.com/shawksly/Unit2-Guess-the-Number)
+#### URL: [https://shawksly.github.io/Unit2-Guess-the-Number/](https://shawksly.github.io/Unit2-Guess-the-Number/)
 
 ## Status === Complete
 
